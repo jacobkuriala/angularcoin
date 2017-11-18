@@ -1,5 +1,22 @@
 <button class="btn btn-primary" (click)="onStartStream()">Start Stream</button>
 <button class="btn btn-primary" (click)="onEndStream()">Stop Stream</button>
-<p>
-  testing-gdaxweb-socket works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-4">
+        <p *ngIf="this.currentETHUSD">
+          Etherium:  $ {{this.currentETHUSD | number: '0.2-2'}}
+        </p>
+    </div>
+    <div class="col-sm-12  col-md-4">
+        <p *ngIf="this.currentBTCUSD">
+          Bitcoin  $ {{this.currentBTCUSD | number: '0.2-2'}}
+        </p>
+    </div>
+    <div class="col-sm-12  col-md-4">
+        <p *ngIf="this.currentLTCUSD">
+          Litecoin  $ {{this.currentLTCUSD | number: '0.2-2'}}
+        </p>
+    </div>
+  </div>
+</div>
+

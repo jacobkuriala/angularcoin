@@ -9,57 +9,80 @@ import { JsonPipe } from '@angular/common/src/pipes';
 export class TestingGdaxwebSocketComponent implements OnInit {
 
   socket: WebSocket;
-
+  currentBTCUSD:number;
+  currentLTCUSD:number;
+  currentETHUSD:number;
   constructor() { }
 
   ngOnInit() {
-    this.createSocket();
+    // this.createSocket();
   }
 
   createSocket(){
     this.socket = new WebSocket('wss://ws-feed.gdax.com');
-    this.socket.onopen =  () => { console.log('stream opened') };
+    let subrequest = {
+      "type": "subscribe",
+      "product_ids": [
+          "BTC-USD",
+          "ETH-USD",
+          "LTC-USD"
+      ],
+      "channels": [
+          {
+              "name": "ticker"
+          }
+      ]
+    };
 
-    this.socket.onmessage = (message) => {console.log(message)};
+    this.socket.onopen =  () => {
+      console.log(subrequest);
+      this.socket.send(JSON.stringify(subrequest));
+      console.log('stream opened');
+    };
+    this.socket.onmessage = (message) => {
+      if(message.data){
+        let data = JSON.parse(message.data);
+        if(data.type === "ticker"){
+          console.log(data);
+          if(data.product_id === "BTC-USD")
+            this.currentBTCUSD = data.price;
+          else if(data.product_id === "ETH-USD")
+            this.currentETHUSD = data.price;
+            else if(data.product_id === "LTC-USD")
+            this.currentLTCUSD = data.price;
+        }else{
+          console.log(message);
+        }
+
+      };
+    }
+  }
+
+  unsubscribe(){
+    if(this.socket){
+      let unsubrequest = // Request
+      {
+          "type": "unsubscribe",
+          "channels": ["ticker"]
+      };
+      this.socket.send(JSON.stringify(unsubrequest));
+    }
   }
 
   noOnDestroy(){
-
+    this.unsubscribe();
   }
 
   onStartStream() {
     console.log(this.socket);
-    if(this.socket.readyState !== WebSocket.OPEN){
+    if(!this.socket || this.socket.readyState !== WebSocket.OPEN){
       this.createSocket();
     }
-    let subrequest = {
-      "type": "subscribe",
-      "product_ids": [
-          "ETH-USD",
-          "ETH-EUR"
-      ],
-      "channels": [
-          {
-              "name": "ticker",
-              "product_ids": [
-                  "ETH-BTC"
-              ]
-          }
-      ]
-  };
-
-  this.socket.send(JSON.stringify(subrequest));
-
   }
 
   onEndStream() {
-
-    let unsubrequest = // Request
-    {
-        "type": "unsubscribe",
-        "channels": ["ticker"]
-    };
-    this.socket.send(JSON.stringify(unsubrequest));
+    this.unsubscribe();
   }
 
 }
+
