@@ -7,7 +7,7 @@ import { GdaxHttpComponent } from './component/gdax-http/gdax-http.component';
 import {HttpClientModule} from '@angular/common/http';
 import { HttpGdaxService } from './http-gdax.service';
 import { PriceChartComponent } from './component/price-chart/price-chart.component';
-
+import  {ChartsModule} from "ng2-charts";
 
 @NgModule({
   declarations: [
@@ -19,7 +19,8 @@ import { PriceChartComponent } from './component/price-chart/price-chart.compone
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule
   ],
   providers: [HttpGdaxService],
   bootstrap: [AppComponent]

@@ -1,3 +1,25 @@
+<!-- <script src="../node_modules/chart.js/src/chart.js">
+</script> -->
+
+<h1>
+  Bitcoin Monthly Price
+</h1>
+<div class="row" *ngIf="isDataAvailable">
+  <div class="center-block col-xs-12 col-md-10 col-lg-8">
+
+    <canvas baseChart #mychart width="400" height="150"
+                [datasets]="lineChartData"
+                [labels]="lineChartLabels"
+                [colors]="lineChartColors"
+                [options]="lineChartOptions"
+                [legend]="lineChartLegend"
+                [chartType]="lineChartType"></canvas>
+
+  </div>
+</div>
 <p>
-  price-chart works!
+  <small>
+  * Data from www.coindesk.com
+  </small>
 </p>
+

@@ -17,20 +17,19 @@ export class HttpGdaxService {
   public getChartsPricesFromCoinDesk() {
     return this.httpClient.get<CoindeskPriceCloseResponse>('https://api.coindesk.com/v1/bpi/historical/close.json')
     .map((priceResponse) =>{
-      let priceChartData = [{
-        key: "Bitcoin Closing Price",
-        values:[]
-      }];
-
+      let priceChartData = {
+        linechartdata:[],
+        linechartlabels:[]
+      };
+      priceChartData.linechartdata.push({
+        data:[],
+        label: "Bitcoin Closing Price"
+        });
         for(let priceKey in priceResponse.bpi){
-          priceChartData[0].values.push({
-            "label" : priceKey,
-            "value" : priceResponse.bpi[priceKey]
-          })
-          console.log(priceKey + ' ' + priceResponse.bpi[priceKey]);
+          priceChartData.linechartdata[0].data.push(Math.floor(+priceResponse.bpi[priceKey]));
+          priceChartData.linechartlabels.push(priceKey);
+          // console.log(priceKey + ' ' + priceResponse.bpi[priceKey]);
         }
-
-        console.log(priceChartData);
         return priceChartData;
     });
   }
