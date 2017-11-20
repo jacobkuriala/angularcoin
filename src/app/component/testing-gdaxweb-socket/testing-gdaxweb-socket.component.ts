@@ -19,7 +19,10 @@ export class TestingGdaxwebSocketComponent implements OnInit {
   }
 
   createSocket(){
-    this.socket = new WebSocket('wss://ws-feed.gdax.com');
+    // realtime
+    // this.socket = new WebSocket('wss://ws-feed.gdax.com');
+    // sandbox
+    this.socket = new WebSocket('wss://ws-feed-public.sandbox.gdax.com');
     let subrequest = {
       "type": "subscribe",
       "product_ids": [

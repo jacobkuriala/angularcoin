@@ -3,18 +3,25 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { TestingGdaxwebSocketComponent } from './component/testing-gdaxweb-socket/testing-gdaxweb-socket.component';
+import { GdaxHttpComponent } from './component/gdax-http/gdax-http.component';
+import {HttpClientModule} from '@angular/common/http';
+import { HttpGdaxService } from './http-gdax.service';
+import { PriceChartComponent } from './component/price-chart/price-chart.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestingGdaxwebSocketComponent
+    TestingGdaxwebSocketComponent,
+    GdaxHttpComponent,
+    PriceChartComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [HttpGdaxService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
