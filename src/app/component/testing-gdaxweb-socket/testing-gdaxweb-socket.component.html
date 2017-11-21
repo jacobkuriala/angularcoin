@@ -3,19 +3,34 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-4">
-        <p *ngIf="this.currentETHUSD">
-          Etherium:  $ {{this.currentETHUSD | number: '0.2-2'}}
-        </p>
+      <div class="card text-white bg-primary" *ngIf="this.currentETHUSD">
+          <h3 class="card-header text-center">Etherium</h3>
+          <div class="card-body">
+            <blockquote class="card-blockquote text-center">
+               <h1> $ {{this.currentETHUSD | number: '0.2-2'}} </h1>
+            </blockquote>
+          </div>
+      </div>
     </div>
     <div class="col-sm-12  col-md-4">
-        <p *ngIf="this.currentBTCUSD">
-          Bitcoin  $ {{this.currentBTCUSD | number: '0.2-2'}}
-        </p>
+      <div class="card text-white bg-primary" *ngIf="this.currentBTCUSD">
+          <h3 class="card-header text-center">Bitcoin</h3>
+          <div class="card-body">
+              <blockquote class="card-blockquote text-center">
+                  <h1> $ {{this.currentBTCUSD | number: '0.2-2'}} </h1>
+               </blockquote>
+          </div>
+      </div>
     </div>
     <div class="col-sm-12  col-md-4">
-        <p *ngIf="this.currentLTCUSD">
-          Litecoin  $ {{this.currentLTCUSD | number: '0.2-2'}}
-        </p>
+      <div class="card text-white bg-primary" *ngIf="this.currentLTCUSD">
+          <h3 class="card-header text-center">Litecoin</h3>
+          <div class="card-body">
+              <blockquote class="card-blockquote text-center">
+                  <h1> $ {{this.currentLTCUSD | number: '0.2-2'}} </h1>
+               </blockquote>
+          </div>
+      </div>
     </div>
   </div>
 </div>

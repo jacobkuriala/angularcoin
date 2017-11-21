@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { JsonPipe } from '@angular/common/src/pipes';
 
 @Component({
@@ -6,7 +6,7 @@ import { JsonPipe } from '@angular/common/src/pipes';
   templateUrl: './testing-gdaxweb-socket.component.html',
   styleUrls: ['./testing-gdaxweb-socket.component.css']
 })
-export class TestingGdaxwebSocketComponent implements OnInit {
+export class TestingGdaxwebSocketComponent implements OnInit,OnDestroy {
 
   socket: WebSocket;
   currentBTCUSD:number;
@@ -20,9 +20,9 @@ export class TestingGdaxwebSocketComponent implements OnInit {
 
   createSocket(){
     // realtime
-    // this.socket = new WebSocket('wss://ws-feed.gdax.com');
+    this.socket = new WebSocket('wss://ws-feed.gdax.com');
     // sandbox
-    this.socket = new WebSocket('wss://ws-feed-public.sandbox.gdax.com');
+    // this.socket = new WebSocket('wss://ws-feed-public.sandbox.gdax.com');
     let subrequest = {
       "type": "subscribe",
       "product_ids": [
@@ -72,7 +72,7 @@ export class TestingGdaxwebSocketComponent implements OnInit {
     }
   }
 
-  noOnDestroy(){
+  ngOnDestroy(){
     this.unsubscribe();
   }
 

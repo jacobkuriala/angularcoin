@@ -19,6 +19,7 @@ import { PriceChartPickerComponent } from './component/price-chart-picker/price-
 
 const appRoutes: Routes = [
   {path: '' ,component: PriceChartComponent},
+  {path: 'ticker', component: TestingGdaxwebSocketComponent},
   {path: 'prices/:duration', component: PriceChartComponent},
 {path: 'about' ,component: AboutComponent}
 ];

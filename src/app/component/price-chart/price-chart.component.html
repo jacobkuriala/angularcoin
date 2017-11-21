@@ -1,12 +1,18 @@
 <!-- <script src="../node_modules/chart.js/src/chart.js">
 </script> -->
 
-<h1>
-  Bitcoin Monthly Price
-</h1>
-<div class="container">
-<app-price-chart-picker></app-price-chart-picker>
 
+<div class="container">
+  <div class="row text-center">
+    <div class="col-xs-12 text-center">
+      <h1 class="text-center">
+          Bitcoin Price Charts
+      </h1>
+    </div>
+  </div>
+  <div >
+    <app-price-chart-picker></app-price-chart-picker>
+  </div>
 <div class="row" *ngIf="isDataAvailable">
   <div class="col-xs-11 col-md-10 col-lg-10">
 
