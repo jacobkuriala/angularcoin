@@ -1,5 +1,5 @@
-<button class="btn btn-primary" (click)="onStartStream()">Start Stream</button>
-<button class="btn btn-primary" (click)="onEndStream()">Stop Stream</button>
+<!-- <button class="btn btn-primary" (click)="onStartStream()">Start Stream</button>
+<button class="btn btn-primary" (click)="onEndStream()">Stop Stream</button> -->
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-4">
@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="col-sm-12  col-md-4">
-      <div class="card text-white bg-primary" *ngIf="this.currentBTCUSD">
+      <div class="card text-white bg-warning" *ngIf="this.currentBTCUSD">
           <h3 class="card-header text-center">Bitcoin</h3>
           <div class="card-body">
               <blockquote class="card-blockquote text-center">
@@ -23,7 +23,7 @@
       </div>
     </div>
     <div class="col-sm-12  col-md-4">
-      <div class="card text-white bg-primary" *ngIf="this.currentLTCUSD">
+      <div class="card text-white bg-success" *ngIf="this.currentLTCUSD">
           <h3 class="card-header text-center">Litecoin</h3>
           <div class="card-body">
               <blockquote class="card-blockquote text-center">
@@ -31,6 +31,12 @@
                </blockquote>
           </div>
       </div>
+    </div>
+  </div>
+  <div class="row text-right" >
+    <div class="col-xs-8"></div>
+    <div class="col-xs-4 text-right" *ngIf="this.currentETHUSD">
+      * Data from gdax.com
     </div>
   </div>
 </div>

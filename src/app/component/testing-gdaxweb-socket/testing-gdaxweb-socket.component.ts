@@ -15,7 +15,10 @@ export class TestingGdaxwebSocketComponent implements OnInit,OnDestroy {
   constructor() { }
 
   ngOnInit() {
-    // this.createSocket();
+     console.log(this.socket);
+    if(!this.socket || this.socket.readyState !== WebSocket.OPEN){
+      this.createSocket();
+    }
   }
 
   createSocket(){
@@ -77,10 +80,10 @@ export class TestingGdaxwebSocketComponent implements OnInit,OnDestroy {
   }
 
   onStartStream() {
-    console.log(this.socket);
-    if(!this.socket || this.socket.readyState !== WebSocket.OPEN){
-      this.createSocket();
-    }
+    // console.log(this.socket);
+    // if(!this.socket || this.socket.readyState !== WebSocket.OPEN){
+    //   this.createSocket();
+    // }
   }
 
   onEndStream() {

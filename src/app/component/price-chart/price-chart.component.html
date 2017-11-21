@@ -14,7 +14,7 @@
     <app-price-chart-picker></app-price-chart-picker>
   </div>
 <div class="row" *ngIf="isDataAvailable">
-  <div class="col-xs-11 col-md-10 col-lg-10">
+  <div class="col-xs-10 col-md-10 col-lg-10">
 
     <canvas baseChart #mychart
                 [datasets]="lineChartData"
@@ -25,11 +25,15 @@
                 [chartType]="lineChartType"></canvas>
 
   </div>
-  <p>
-      <small>
-      * Data from www.coindesk.com
-      </small>
-    </p>
+</div>
+<div class="row" *ngIf="isDataAvailable">
+  <div class="col-xs-12">
+      <p>
+          <small>
+          * Data from www.coindesk.com
+          </small>
+        </p>
+  </div>
 </div>
 </div>
 
