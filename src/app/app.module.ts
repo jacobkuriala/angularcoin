@@ -18,7 +18,7 @@ import { PriceChartPickerComponent } from './component/price-chart-picker/price-
 
 
 const appRoutes: Routes = [
-  {path: '' ,component: PriceChartComponent},
+  {path: '' , redirectTo:'prices/month', pathMatch:'full'},
   {path: 'ticker', component: TestingGdaxwebSocketComponent},
   {path: 'prices/:duration', component: PriceChartComponent},
 {path: 'about' ,component: AboutComponent}
