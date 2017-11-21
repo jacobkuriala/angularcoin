@@ -121,7 +121,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var appRoutes = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_11__component_price_chart_price_chart_component__["a" /* PriceChartComponent */] },
+    { path: '', redirectTo: 'prices/month', pathMatch: 'full' },
     { path: 'ticker', component: __WEBPACK_IMPORTED_MODULE_9__component_testing_gdaxweb_socket_testing_gdaxweb_socket_component__["a" /* TestingGdaxwebSocketComponent */] },
     { path: 'prices/:duration', component: __WEBPACK_IMPORTED_MODULE_11__component_price_chart_price_chart_component__["a" /* PriceChartComponent */] },
     { path: 'about', component: __WEBPACK_IMPORTED_MODULE_13__component_about_about_component__["a" /* AboutComponent */] }
