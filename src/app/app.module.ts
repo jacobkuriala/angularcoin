@@ -13,6 +13,7 @@ import { GdaxHttpComponent } from './component/gdax-http/gdax-http.component';
 import { PriceChartComponent } from './component/price-chart/price-chart.component';
 import { TopNavComponent } from './component/top-nav/top-nav.component';
 import { AboutComponent } from './component/about/about.component';
+import { PriceChartPickerComponent } from './component/price-chart-picker/price-chart-picker.component';
 
 
 
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
     GdaxHttpComponent,
     PriceChartComponent,
     TopNavComponent,
-    AboutComponent
+    AboutComponent,
+    PriceChartPickerComponent
   ],
   imports: [
     BrowserModule,
