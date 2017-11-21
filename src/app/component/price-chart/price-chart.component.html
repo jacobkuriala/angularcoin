@@ -1,0 +1,40 @@
+<!-- <script src="../node_modules/chart.js/src/chart.js">
+</script> -->
+
+
+<div class="container">
+  <div class="row text-center">
+    <div class="col-xs-12 text-center">
+      <h1 class="text-center">
+          Bitcoin Price Charts
+      </h1>
+    </div>
+  </div>
+  <div >
+    <app-price-chart-picker></app-price-chart-picker>
+  </div>
+<div class="row" *ngIf="isDataAvailable">
+  <div class="col-xs-10 col-md-10 col-lg-10">
+
+    <canvas baseChart #mychart
+                [datasets]="lineChartData"
+                [labels]="lineChartLabels"
+                [colors]="lineChartColors"
+                [options]="lineChartOptions"
+                [legend]="lineChartLegend"
+                [chartType]="lineChartType"></canvas>
+
+  </div>
+</div>
+<div class="row" *ngIf="isDataAvailable">
+  <div class="col-xs-12">
+      <p>
+          <small>
+          * Data from www.coindesk.com
+          </small>
+        </p>
+  </div>
+</div>
+</div>
+
+

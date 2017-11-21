@@ -1,5 +1,55 @@
-<button class="btn btn-primary" (click)="onStartStream()">Start Stream</button>
-<button class="btn btn-primary" (click)="onEndStream()">Stop Stream</button>
-<p>
-  testing-gdaxweb-socket works!
-</p>
+<!-- <button class="btn btn-primary" (click)="onStartStream()">Start Stream</button>
+<button class="btn btn-primary" (click)="onEndStream()">Stop Stream</button> -->
+<div class="container">
+    <div class="row text-center">
+        <div class="col-xs-12 text-center">
+          <h1 class="text-center">
+              Live Price Feeds
+          </h1>
+        </div>
+      </div>
+      <div class="row text-center">
+          <div class="col-sm-12 text-center" *ngIf="!this.currentBTCUSD">
+              <h1><i class="fa fa-btc" aria-hidden="true"></i></h1> Loading...
+          </div>
+      </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-4">
+      <div class="card text-white bg-primary" *ngIf="this.currentETHUSD">
+          <h3 class="card-header text-center">Etherium</h3>
+          <div class="card-body">
+            <blockquote class="card-blockquote text-center">
+               <h1> $ {{this.currentETHUSD | number: '0.2-2'}} </h1>
+            </blockquote>
+          </div>
+      </div>
+    </div>
+    <div class="col-sm-12  col-md-4">
+      <div class="card text-white bg-warning" *ngIf="this.currentBTCUSD">
+          <h3 class="card-header text-center">Bitcoin</h3>
+          <div class="card-body">
+              <blockquote class="card-blockquote text-center">
+                  <h1> $ {{this.currentBTCUSD | number: '0.2-2'}} </h1>
+               </blockquote>
+          </div>
+      </div>
+    </div>
+    <div class="col-sm-12  col-md-4">
+      <div class="card text-white bg-success" *ngIf="this.currentLTCUSD">
+          <h3 class="card-header text-center">Litecoin</h3>
+          <div class="card-body">
+              <blockquote class="card-blockquote text-center">
+                  <h1> $ {{this.currentLTCUSD | number: '0.2-2'}} </h1>
+               </blockquote>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="row text-right" >
+    <div class="col-xs-8"></div>
+    <div class="col-xs-4 text-right" *ngIf="this.currentETHUSD">
+      * Data from gdax.com
+    </div>
+  </div>
+</div>
+
