@@ -1,6 +1,18 @@
 <!-- <button class="btn btn-primary" (click)="onStartStream()">Start Stream</button>
 <button class="btn btn-primary" (click)="onEndStream()">Stop Stream</button> -->
 <div class="container">
+    <div class="row text-center">
+        <div class="col-xs-12 text-center">
+          <h1 class="text-center">
+              Live Price Feeds
+          </h1>
+        </div>
+      </div>
+      <div class="row text-center">
+          <div class="col-sm-12 text-center" *ngIf="!this.currentBTCUSD">
+              <h1><i class="fa fa-btc" aria-hidden="true"></i></h1> Loading...
+          </div>
+      </div>
   <div class="row">
     <div class="col-sm-12 col-md-4">
       <div class="card text-white bg-primary" *ngIf="this.currentETHUSD">
