@@ -18,6 +18,7 @@ import { AboutComponent } from './component/about/about.component';
 
 const appRoutes: Routes = [
   {path: '' ,component: PriceChartComponent},
+  {path: 'prices/:duration', component: PriceChartComponent},
 {path: 'about' ,component: AboutComponent}
 ];
 

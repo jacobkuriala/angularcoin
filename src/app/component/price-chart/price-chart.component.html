@@ -4,10 +4,25 @@
 <h1>
   Bitcoin Monthly Price
 </h1>
-<div class="row" *ngIf="isDataAvailable">
-  <div class="center-block col-xs-12 col-md-10 col-lg-8">
+<div class="container">
+<div class="text-center">
+<ul class="nav nav-pills center-pills">
+    <li class="nav-item">
+      <a class="nav-link" routerLinkActive="active" routerLink="/prices/year">Year</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLinkActive="active" routerLink="/prices/month">Month</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLinkActive="active" routerLink="/prices/week">Week</a>
+    </li>
+  </ul>
+</div>
 
-    <canvas baseChart #mychart width="400" height="150"
+<div class="row" *ngIf="isDataAvailable">
+  <div class="col-xs-11 col-md-10 col-lg-10">
+
+    <canvas baseChart #mychart
                 [datasets]="lineChartData"
                 [labels]="lineChartLabels"
                 [colors]="lineChartColors"
@@ -16,10 +31,12 @@
                 [chartType]="lineChartType"></canvas>
 
   </div>
+  <p>
+      <small>
+      * Data from www.coindesk.com
+      </small>
+    </p>
 </div>
-<p>
-  <small>
-  * Data from www.coindesk.com
-  </small>
-</p>
+</div>
+
 

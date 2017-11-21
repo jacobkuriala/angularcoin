@@ -4,6 +4,8 @@ import { HttpGdaxService } from '../../http-gdax.service';
 import { Observable } from 'rxjs/Observable';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { BaseChartDirective } from 'ng2-charts';
+import {ActivatedRoute} from "@angular/router";
+import { Params } from '@angular/router/src/shared';
 
 @Component({
   selector: 'app-price-chart',
@@ -15,11 +17,7 @@ export class PriceChartComponent implements OnInit, OnDestroy {
   // lineChart
   public isDataAvailable:boolean = false;
    public lineChartData:Array<any> = [{data: []}];
-  // [
-  //   {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-  // ];
   public lineChartLabels:Array<any> = [];
-  //= ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public lineChartOptions:any = {
     responsive: true
   };
@@ -37,21 +35,28 @@ export class PriceChartComponent implements OnInit, OnDestroy {
   public lineChartType:string = 'line';
 
   result;
-  constructor(private httpGdaxService: HttpGdaxService) { }
+  constructor(private httpGdaxService: HttpGdaxService,
+  private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    //let duration:string = this.activatedRoute.snapshot.params['duration'];
 
-    this.result = this.httpGdaxService.getChartsPricesFromCoinDesk().subscribe(
-      (response) => { console.log(response);
-        this.lineChartLabels = response.linechartlabels;
-        console.log(response.linechartdata);
-        this.lineChartData = response.linechartdata;
-        this.isDataAvailable = true;
+    this.activatedRoute.params.subscribe((params: Params)=>{
+      this.isDataAvailable = false;
+      let duration:string = params['duration'];
+      this.result = this.httpGdaxService.getChartsPricesWithParameters(duration).subscribe(
+        (response) => { console.log(response);
+          this.lineChartLabels = response.linechartlabels;
+          console.log(response.linechartdata);
+          this.lineChartData = response.linechartdata;
+          this.isDataAvailable = true;
 
-      },
-      (error) => {console.log('Error')},
-      () => {console.log('completed')}
-    );
+        },
+        (error) => {console.log('Error')},
+        () => {console.log('completed')}
+      );
+    });
+
   }
 
   ngOnDestroy(){
